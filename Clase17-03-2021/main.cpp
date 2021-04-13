@@ -4,38 +4,41 @@
 //
 //  Created by Countyfoot on 4/12/21.
 //
-// En este programa organizaremos el ejercicio anterior modularizandolo en funciones.
+// En este programa queremos hacer un segundo ejercicio, en este ejercicio queremos realizar la suma de los numeros pares de la sucesión de fibonacci en donde el mayor numero que tomemos de la sucesión no supere los 4 millones.
 //
 //Comenzamos añadiendo las librerias.
 #include <iostream>
 #include <cstdlib>
 
-void print_sum_multiples(int m, int n);
+void sum_even_fibo(int nmax);
 
 int main(int argc, char *argv[])
 {
-    int a = std::atof(argv[1]);
-    int b = std::atof(argv[2]);
-    
-    print_sum_multiples(a, b);
+    int limit =std::atoi(argv[1]);
+
+    sum_even_fibo(limit);
+
     return 0;
 }
-void print_sum_multiples(int m, int n)
-{
-    int suma=0;
-    for(int ii=m; ii<n; ++ii)
-        {
-            if(ii%3==0 || ii%5==0)
-                {
-                    suma+=ii;
-                }
-        }
-    std::cout<<"La suma es: "<<"\n";
-}
 
-// El programa esta hecho, si al momento de compilar y luego al ejecutar escribimos:
-// ./a.out 1 1000
-// El programa nos botara la suma de: 233168.
-// Si hacemos la prueba de los numeros del 1 al 10 tenemos que al ejecutar escribimos:
-// ./a.out 1 10
-// El programa nos botara la suma de: 23.
+void sum_even_fibo(int nmax)
+{
+  int suma = 2;
+  int na = 1, nb = 2;
+  std::cout << na << " ";
+  std::cout << nb << " ";
+  int term = na + nb;
+  while (term <= nmax)
+  {
+    if (term%2 == 0)
+    {
+      suma += term;
+    }
+    std::cout << term << " ";
+    na = nb;
+    nb = term;
+    term = na + nb;
+  }
+  std::cout << "\n";
+  std::cout << "suma: " << suma << "\n";
+}
